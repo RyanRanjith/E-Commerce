@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const { type } = require("os");
 
 app.use(express.json());
 app.use(cors());
@@ -53,7 +54,53 @@ const Product = mongoose.model("Product",{
     name:{
         type:String,
     required:true,
-    }
+    },
+    image:{
+        type:String,
+        required:true,
+    },
+    image:{
+        type:String,
+        required:true,
+    },
+    category:{
+        type:String,
+        required:true,
+    },
+    new_price:{
+        type:Number,
+        required:true,
+    },
+    old_price:{
+        type:Number,
+        required:true,
+    },
+    date:{
+        type:Date,
+        default:Date.now,
+    },
+    avilable:{
+        type:Boolean,
+        default:true,
+    },
+})
+
+app.post('/addproduct',async (req,res)=>{
+    const product = new Product({
+        id:req.body.id,
+        name:req.body.name,
+        image:req.body.image,
+        category:req.body.category,
+        new_price:req.body.new_price,
+        old_price:req.body.old_price,
+    });
+    console.log(product);
+    await product.save();
+    console.log("Saved");
+    res.json({
+        success:true,
+        name:req.body.name,
+    })
 })
 
 app.listen(port,(error)=>{
