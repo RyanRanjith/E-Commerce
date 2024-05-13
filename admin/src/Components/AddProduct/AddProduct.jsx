@@ -29,7 +29,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append('product',image);
 
-    await fetch('')
+    await fetch('http://')
 
   }
 
