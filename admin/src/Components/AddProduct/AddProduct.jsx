@@ -48,6 +48,8 @@ const AddProduct = () => {
           'Content-Type':'application/json',
         },
         body:JSON.stringify(product),
+       }).then((resp)=>resp.json()).then((data)=>{
+        data.success?alert("Product Added"):alert("Failed")
        })
        }    
 
