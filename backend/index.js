@@ -218,6 +218,11 @@ app.get('/newcollections',async (req,res)=>{
 
 })
 
+// creating endpoint for popular in women  section
+
+app.get('/popularinwomen',async (req,res)=>{
+    let products = await Product.find({category:""})
+})
 
 app.listen(port,(error)=>{
     if(!error){
